@@ -35,14 +35,14 @@ add_executable(tetris WIN32 MACOSX_BUNDLE
 	source/utils/u8names.cpp
 	shaders/shader.cpp
 	source/main.cpp
-	source/Ship.cpp
-	source/Ship.h 
+	source/board.cpp
+	source/board.hpp 
 	source/block.cpp
 	source/block.hpp
 	shaders/fshader_block.glsl
 	shaders/vshader_block.glsl
-	shaders/fshader_Ship.glsl
-	shaders/vshader_Ship.glsl)
+	shaders/fshader_board.glsl
+	shaders/vshader_board.glsl)
 	
 #Windows cleanup
 if (MSVC)

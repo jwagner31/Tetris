@@ -2,7 +2,7 @@
 
 using namespace Angel;
 
-Ship ship;
+board board;
 block piece;
 
 static void error_callback(int error, const char* description)
@@ -12,6 +12,7 @@ static void error_callback(int error, const char* description)
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+  /*
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     glfwSetWindowShouldClose(window, GLFW_TRUE);
   if (key == GLFW_KEY_LEFT && (action == GLFW_PRESS || action == GLFW_REPEAT))
@@ -29,14 +30,16 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
   if (key == GLFW_KEY_Z && action == GLFW_PRESS){
     //!!!!!!!!Fire bullet
   }
+   */
 }
+ 
 
 void init(){
   
   glClearColor(0.0, 0.0, 0.0, 1.0);
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
-  ship.gl_init();
+  board.gl_init();
   piece.gl_init();
   
 }
@@ -86,7 +89,7 @@ int main(void)
     
     glClear(GL_COLOR_BUFFER_BIT);
     
-    ship.draw(proj);
+    board.draw(proj);
     piece.draw(proj);
     
     glfwSwapBuffers(window);
