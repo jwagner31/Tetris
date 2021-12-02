@@ -1,6 +1,6 @@
 //
 //  common.h
-//  Asteroids
+//  Tetris
 //
 //  Created by Brian Summa on 9/7/15.
 //

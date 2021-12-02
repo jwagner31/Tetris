@@ -5,7 +5,21 @@
 //  Created by Joe Wagner on 12/1/21.
 //
 
-#include "common.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include <list>
+#include <vector>
+#include <cmath>
+
+#include "utils/Angel.h"
+
+using namespace Angel;
+
+#include "shader.h"
+#include "block.hpp"
 
   //Block Constructor
   block::block(){
@@ -20,8 +34,9 @@ void block::gl_init(){
   vec2 tempVec = block::getLocation();
    block_vert[0] = tempVec;
    block_vert[1] = vec2(tempVec.x, tempVec.y - 1);
-   block_vert[2] = vec2(tempVec.x+1, tempVec.y);
-   block_vert[3] = vec2(tempVec.x+1, tempVec.y - 1);
+   block_vert[2] = vec2(tempVec.x+1, tempVec.y+1);
+   block_vert[3] = vec2(tempVec.x+1, tempVec.y);
+
 
   
   block_color[0] = block::getColor();
@@ -91,11 +106,12 @@ void block::draw(mat4 proj){
   glUseProgram( GLvars.program );
   glBindVertexArray( GLvars.vao );
   
+  
   //If you have a modelview matrix, pass it with proj
   glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj);
   
   //Draw something
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  glDrawArrays(GL_QUADS, 0, 4);
   
   glBindVertexArray(0);
   glUseProgram(0);

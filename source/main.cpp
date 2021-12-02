@@ -1,7 +1,5 @@
 #include "common.h"
 
-using namespace Angel;
-
 board board;
 block piece;
 

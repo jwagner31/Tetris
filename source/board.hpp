@@ -12,11 +12,7 @@
 
 class board{
 public:
-  
-  board(){};
-  ~board(){
-    blocks.clear();
-  }
+
   
   GLuint vao;
   GLuint program;
@@ -24,14 +20,17 @@ public:
   GLuint vertex_shader, fragment_shader;
   GLint vpos_location, vcolor_location;
   GLint PM_location;
-
-  std::vector < block  > blocks;
   
-  void init();
+  board();
+  
+  void gl_init();
   
   void update();
+  
+  block **blockGrid;
+  
+  
     
-  void emit();
   
   };
  
