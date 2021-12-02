@@ -8,7 +8,21 @@
 #ifndef board_hpp
 #define board_hpp
 
-#include "common.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#include <list>
+#include <vector>
+#include <cmath>
+
+#include "utils/Angel.h"
+
+using namespace Angel;
+
+#include "shader.h"
+#include "block.hpp"
 
 class board{
 public:
