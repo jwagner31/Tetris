@@ -1,6 +1,8 @@
 #include "common.h"
 
-board board;
+using namespace Angel;
+
+//board board;
 block piece;
 
 static void error_callback(int error, const char* description)
@@ -37,9 +39,8 @@ void init(){
   glClearColor(0.0, 0.0, 0.0, 1.0);
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
-  board.gl_init();
-  piece.gl_init();
-  
+  //board.init();
+  //piece.gl_init();
 }
 
 int main(void)
@@ -59,7 +60,7 @@ int main(void)
   glfwWindowHint(GLFW_SAMPLES, 10);
   
   
-  window = glfwCreateWindow(1024, 768, "TETRIS", NULL, NULL);
+  window = glfwCreateWindow(1024, 516, "TETRIS", NULL, NULL);
   if (!window){
     glfwTerminate();
     exit(EXIT_FAILURE);
@@ -81,14 +82,14 @@ int main(void)
     
     //Pick a coordinate system that makes the most sense to you
     //(left, right, top, bottom)
-    mat4 proj = Ortho2D(-1.0, 1.0, 1.0, -1.0);
+    mat4 proj = Ortho2D(-10.0, 10.0, 10.0, -10.0);
     
     //animate();
     
     glClear(GL_COLOR_BUFFER_BIT);
     
-    board.draw(proj);
-    piece.draw(proj);
+    //board.draw(proj);
+    //block.draw(proj);
     
     glfwSwapBuffers(window);
     glfwPollEvents();
@@ -100,4 +101,5 @@ int main(void)
   glfwTerminate();
   exit(EXIT_SUCCESS);
 }
+
 
