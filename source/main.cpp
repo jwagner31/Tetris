@@ -2,7 +2,7 @@
 
 using namespace Angel;
 
-board board;
+//board board;
 block piece;
 
 static void error_callback(int error, const char* description)
@@ -39,8 +39,8 @@ void init(){
   glClearColor(0.0, 0.0, 0.0, 1.0);
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
-  board.gl_init();
-  piece.gl_init();
+  //board.init();
+  //piece.gl_init();
   
 }
 
@@ -89,8 +89,8 @@ int main(void)
     
     glClear(GL_COLOR_BUFFER_BIT);
     
-    board.draw(proj);
-    piece.draw(proj);
+    //board.draw(proj);
+    //block.draw(proj);
     
     glfwSwapBuffers(window);
     glfwPollEvents();

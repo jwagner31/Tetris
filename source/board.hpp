@@ -9,14 +9,11 @@
 #define board_hpp
 
 #include "common.h"
+#include "block.hpp"
 
 class board{
 public:
-  
-  board(){};
-  ~board(){
-    blocks.clear();
-  }
+ 
   
   GLuint vao;
   GLuint program;
@@ -25,13 +22,14 @@ public:
   GLint vpos_location, vcolor_location;
   GLint PM_location;
 
-  std::vector < block  > blocks;
+  std::vector<block> blocks;
   
   void init();
   
   void update();
     
   void emit();
+  void draw(mat4 proj);
   
   };
  
