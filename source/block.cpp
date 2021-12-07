@@ -23,7 +23,7 @@ using namespace Angel;
 
   //Block Constructor
   block::block(){
-    loc = vec2(0.0, 10.0);
+    loc = vec2(0.0, 5.0);
     color = vec3(1.0, 0.0, 0.0);
 
   };
