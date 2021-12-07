@@ -38,10 +38,10 @@ void block::gl_init(){
    block_vert[2] = vec2(tempVec.x+1, tempVec.y+1);
    block_vert[3] = vec2(tempVec.x+1, tempVec.y);
    */
-  block_vert[0] = vec2(0.0, 0.5);
+  block_vert[0] = vec2(0.0, 1.0);
   block_vert[1] = vec2(0.0, 0.0);
-  block_vert[2] = vec2(0.5, 0.0);
-  block_vert[3] = vec2(0.5, 0.5);
+  block_vert[2] = vec2(1.0, 1.0);
+  block_vert[3] = vec2(1.0, 0.0);
   
   block_color[0] = vec3(1.0, 0.0, 0.0);
   block_color[1] = vec3(1.0, 0.0, 0.0);
@@ -121,7 +121,7 @@ void block::draw(mat4 proj){
   glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj);
   
   //Draw something
-  glDrawArrays(GL_QUADS, 0, 4);
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
   
   glBindVertexArray(0);
   glUseProgram(0);
