@@ -24,25 +24,35 @@ using namespace Angel;
   //Block Constructor
   block::block(){
     loc = vec2(0.0, 0.0);
-    color = vec3(0.5, 0.5, 0.5);
+    color = vec3(1.0, 0.0, 0.0);
     block::setLocation(loc.x, loc.y);
     block::setColor(color.x, color.y, color.z);
   };
 
 void block::gl_init(){
   //Block
+  /*
   vec2 tempVec = block::getLocation();
    block_vert[0] = tempVec;
    block_vert[1] = vec2(tempVec.x, tempVec.y - 1);
    block_vert[2] = vec2(tempVec.x+1, tempVec.y+1);
    block_vert[3] = vec2(tempVec.x+1, tempVec.y);
-
-
+   */
+  block_vert[0] = vec2(0.0, 0.5);
+  block_vert[1] = vec2(0.0, 0.0);
+  block_vert[2] = vec2(0.5, 0.0);
+  block_vert[3] = vec2(0.5, 0.5);
   
+  block_color[0] = vec3(1.0, 0.0, 0.0);
+  block_color[1] = vec3(1.0, 0.0, 0.0);
+  block_color[2] = vec3(1.0, 0.0, 0.0);
+  block_color[3] = vec3(1.0, 0.0, 0.0);
+  /*
   block_color[0] = block::getColor();
   block_color[1] = block::getColor();
   block_color[2] = block::getColor();
   block_color[3] = block::getColor();
+   */
   
   std::string vshader = shader_path + "vshader_block.glsl";
   std::string fshader = shader_path + "fshader_block.glsl";

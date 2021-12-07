@@ -25,18 +25,22 @@ class board{
 public:
 
   
-  GLuint vao;
-  GLuint program;
-  GLuint buffer;
-  GLuint vertex_shader, fragment_shader;
-  GLint vpos_location, vcolor_location;
-  GLint PM_location;
+    GLuint vao;           //Vertex array object
+    GLuint program;       //shader program
+    GLuint buffer;        //Vertex buffer objects
+    GLuint vertex_shader, fragment_shader;  //Shaders
+    GLint vpos_location, vcolor_location;   //reference to pos and color in shaders
+    GLint M_location;     //Reference to matrix in shader
   
   board();
   
   void gl_init();
   
   void update();
+  
+  void init();
+  
+  void draw(mat4 proj);
   
   block **blockGrid;
   

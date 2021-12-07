@@ -20,6 +20,11 @@
 #include <cmath>
 
 #include "utils/Angel.h"
+#include "utils/CheckError.h"
+#include "utils/mat.h"
+#include "utils/u8names.h"
+#include "utils/vec.h"
+
 
 using namespace Angel;
 
@@ -46,11 +51,14 @@ class block{
   vec2 loc;
   vec3 color;
   
+  //Block Constructor for initial spawn state
   block();
   
+  //Initialize the gl state and variables
   void gl_init();
   
-  void draw(mat4 proj2);
+  //Draw a single block
+  void draw(mat4 proj);
   
   inline vec2 getLocation(){
     return loc;

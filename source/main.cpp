@@ -12,35 +12,34 @@ static void error_callback(int error, const char* description)
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-  /*
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     glfwSetWindowShouldClose(window, GLFW_TRUE);
   if (key == GLFW_KEY_LEFT && (action == GLFW_PRESS || action == GLFW_REPEAT))
-    ship.rotateLeft();
+    //ship.rotateLeft();
   if (key == GLFW_KEY_RIGHT && (action == GLFW_PRESS || action == GLFW_REPEAT))
-    ship.rotateRight();
+    //ship.rotateRight();
   if (key == GLFW_KEY_SPACE){
     if(action == GLFW_PRESS){
-      ship.start_thruster();
+      //ship.start_thruster();
     }
     if(action == GLFW_RELEASE){
-      ship.stop_thruster();
+      //ship.stop_thruster();
     }
   }
   if (key == GLFW_KEY_Z && action == GLFW_PRESS){
     //!!!!!!!!Fire bullet
   }
-   */
 }
  
 
 void init(){
   
-  glClearColor(0.0, 0.0, 0.0, 1.0);
+  glClearColor(1.0, 1.0, 1.0, 1.0);
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
   //board.init();
-  //piece.gl_init();
+  
+  piece.gl_init();
 }
 
 int main(void)
@@ -60,7 +59,7 @@ int main(void)
   glfwWindowHint(GLFW_SAMPLES, 10);
   
   
-  window = glfwCreateWindow(1024, 516, "TETRIS", NULL, NULL);
+  window = glfwCreateWindow(1024, 1024, "TETRIS", NULL, NULL);
   if (!window){
     glfwTerminate();
     exit(EXIT_FAILURE);
@@ -82,14 +81,14 @@ int main(void)
     
     //Pick a coordinate system that makes the most sense to you
     //(left, right, top, bottom)
-    mat4 proj = Ortho2D(-10.0, 10.0, 10.0, -10.0);
+    mat4 proj = Ortho2D(-1.0, 1.0, 1.0, -1.0);
     
     //animate();
     
     glClear(GL_COLOR_BUFFER_BIT);
     
     //board.draw(proj);
-    //block.draw(proj);
+    piece.draw(proj);
     
     glfwSwapBuffers(window);
     glfwPollEvents();

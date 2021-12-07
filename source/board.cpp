@@ -5,11 +5,34 @@
 //  Created by Joe Wagner on 12/1/21.
 //
 
-#include "common.h"
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-/*board::board() {
+#include <list>
+#include <vector>
+#include <cmath>
+
+#include "utils/Angel.h"
+#include "utils/CheckError.h"
+#include "utils/mat.h"
+#include "utils/u8names.h"
+#include "utils/vec.h"
+
+
+
+
+using namespace Angel;
+
+#include "shader.h"
+//#include "board.hpp"
+#include "block.hpp"
+#include "board.hpp"
+
+board::board() {
     int blocks = 0;
-};*/
+};
 
 void board::init() {
   std::string vshader = shader_path + "vshader_board.glsl";
@@ -39,7 +62,7 @@ void board::init() {
   
   vpos_location   = glGetAttribLocation(program, "vPos");
   vcolor_location = glGetAttribLocation( program, "vColor" );
-  PM_location = glGetUniformLocation( program, "ProjectionModelview" );
+  M_location = glGetUniformLocation( program, "ProjectionModelview" );
 
   // Create a vertex array object
   glGenVertexArrays( 1, &vao );

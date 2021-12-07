@@ -19,11 +19,18 @@
 #include <cmath>
 
 #include "utils/Angel.h"
+#include "utils/CheckError.h"
+#include "utils/mat.h"
+#include "utils/u8names.h"
+#include "utils/vec.h"
+
+
+
 
 using namespace Angel;
 
 #include "shader.h"
-#include "board.hpp"
+//#include "board.hpp"
 #include "block.hpp"
 
 
