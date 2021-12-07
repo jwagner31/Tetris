@@ -35,7 +35,7 @@ class shape{
   
   struct{
     int blockCount; //Keeps track of figure's blocks, 0 signifies block does not exist yet
-    block **shapeBlocks; //
+    block **shapeBlocks; //Points to array 
   } state;
  public:
   
