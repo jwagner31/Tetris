@@ -32,6 +32,7 @@ using namespace Angel;
 #include "shader.h"
 //#include "board.hpp"
 #include "block.hpp"
+#include "shape.hpp"
 
 
 

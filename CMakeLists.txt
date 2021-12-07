@@ -39,8 +39,8 @@ add_executable(tetris WIN32 MACOSX_BUNDLE
 	source/board.hpp 
 	source/block.cpp
 	source/block.hpp
-	source/figure.hpp
-	source/figure.cpp
+	source/shape.hpp
+	source/shape.cpp
 	shaders/fshader_block.glsl
 	shaders/vshader_block.glsl
 	shaders/fshader_board.glsl

@@ -1,4 +1,3 @@
-
 //
 //  block.hpp
 //  asteroids
