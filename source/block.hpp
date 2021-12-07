@@ -48,6 +48,8 @@ class block{
   
 
  public:
+  
+  //Current values for the block
   vec2 loc;
   vec3 color;
   

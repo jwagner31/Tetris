@@ -23,37 +23,23 @@ using namespace Angel;
 
   //Block Constructor
   block::block(){
-    loc = vec2(0.0, 0.0);
+    loc = vec2(0.0, 10.0);
     color = vec3(1.0, 0.0, 0.0);
-    block::setLocation(loc.x, loc.y);
-    block::setColor(color.x, color.y, color.z);
+
   };
 
 void block::gl_init(){
-  //Block
-  /*
-  vec2 tempVec = block::getLocation();
-   block_vert[0] = tempVec;
-   block_vert[1] = vec2(tempVec.x, tempVec.y - 1);
-   block_vert[2] = vec2(tempVec.x+1, tempVec.y+1);
-   block_vert[3] = vec2(tempVec.x+1, tempVec.y);
-   */
-  block_vert[0] = vec2(0.0, 1.0);
-  block_vert[1] = vec2(0.0, 0.0);
-  block_vert[2] = vec2(1.0, 1.0);
-  block_vert[3] = vec2(1.0, 0.0);
+
+  block_vert[0] = vec2(0.0, 0.0);
+  block_vert[1] = vec2(0.0, -1.0);
+  block_vert[2] = vec2(1.0, 0.0);
+  block_vert[3] = vec2(1.0, -1.0);
   
   block_color[0] = vec3(1.0, 0.0, 0.0);
   block_color[1] = vec3(1.0, 0.0, 0.0);
   block_color[2] = vec3(1.0, 0.0, 0.0);
   block_color[3] = vec3(1.0, 0.0, 0.0);
-  /*
-  block_color[0] = block::getColor();
-  block_color[1] = block::getColor();
-  block_color[2] = block::getColor();
-  block_color[3] = block::getColor();
-   */
-  
+
   std::string vshader = shader_path + "vshader_block.glsl";
   std::string fshader = shader_path + "fshader_block.glsl";
   
@@ -116,9 +102,10 @@ void block::draw(mat4 proj){
   glUseProgram( GLvars.program );
   glBindVertexArray( GLvars.vao );
   
-  
+  mat4 M1;
+  M1 = Translate(getLocation().x, getLocation().y, 0.0);
   //If you have a modelview matrix, pass it with proj
-  glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj);
+  glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj*M1);
   
   //Draw something
   glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

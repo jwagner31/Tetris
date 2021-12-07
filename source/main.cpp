@@ -59,7 +59,7 @@ int main(void)
   glfwWindowHint(GLFW_SAMPLES, 10);
   
   
-  window = glfwCreateWindow(1024, 1024, "TETRIS", NULL, NULL);
+  window = glfwCreateWindow(512, 512, "TETRIS", NULL, NULL);
   if (!window){
     glfwTerminate();
     exit(EXIT_FAILURE);
@@ -81,7 +81,7 @@ int main(void)
     
     //Pick a coordinate system that makes the most sense to you
     //(left, right, top, bottom)
-    mat4 proj = Ortho2D(-1.0, 1.0, 1.0, -1.0);
+    mat4 proj = Ortho2D(-10.0, 10.0, -10.0, 10.0);
     
     //animate();
     
