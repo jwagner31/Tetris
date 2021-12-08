@@ -34,19 +34,23 @@ using namespace Angel;
 class shape{
   
   struct{
-    int blockCount; //Keeps track of figure's blocks, 0 signifies block does not exist yet
-    block **shapeBlocks; //Points to pointer to array of blocks
+    int numBlocks; //Keeps track of figure's blocks, 0 signifies block does not exist yet
+    block (*shapeBlocks)[4]; //Points to pointer to array of blocks
   } state;
+  
  public:
   
-  //Shape Constructor
+  //Shape Constructor for empty shape
   shape();
   
+  //Shape Initializer
+  void init();
   
-  
-  
-  //Draw a single block
+  //Draw a shape by drawing the four blocks in shapeBlocks
   void draw(mat4 proj);
+  
+  //Getter Function for Shape
+  block getBlock(int i);
   
 };
 
