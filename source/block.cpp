@@ -24,13 +24,13 @@ using namespace Angel;
   //Block Constructor
   block::block(){
     loc = vec2(0.0, 10.0);
-    color = vec3(1.0, 0.0, 0.0);
+    color = vec3(0.0, 1.0, 0.0);
 
   };
 
   block::block(float x, float y){
     loc = vec2(x, y);
-    color = vec3(1.0, 0.0, 0.0);
+    color = vec3(0.0, 0.0, 0.8);
 
   };
 
@@ -41,10 +41,10 @@ void block::gl_init(){
   block_vert[2] = vec2(1.0, 0.0);
   block_vert[3] = vec2(1.0, -1.0);
   
-  block_color[0] = vec3(1.0, 0.0, 0.0);
-  block_color[1] = vec3(1.0, 0.0, 0.0);
-  block_color[2] = vec3(1.0, 0.0, 0.0);
-  block_color[3] = vec3(1.0, 0.0, 0.0);
+  block_color[0] = color;
+  block_color[1] = color;
+  block_color[2] = color;
+  block_color[3] = color;
 
   std::string vshader = shader_path + "vshader_block.glsl";
   std::string fshader = shader_path + "fshader_block.glsl";

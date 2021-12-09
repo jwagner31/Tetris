@@ -23,31 +23,33 @@ using namespace Angel;
 
 class board{
 public:
-
-  
-    GLuint vao;           //Vertex array object
-    GLuint program;       //shader program
-    GLuint buffer;        //Vertex buffer objects
-    GLuint vertex_shader, fragment_shader;  //Shaders
-    GLint vpos_location, vcolor_location;   //reference to pos and color in shaders
-    GLint M_location;     //Reference to matrix in shader
-  
-  board();
-  
-  void gl_init();
-  
-  void update();
-  
-  void init();
-  
-  void draw(mat4 proj);
-  
-  block **blockGrid;
-  
-  
+    //11 top 11 bottom 21 left right 21 right
+    vec2 board_vert[4];
+    vec3 board_color[4];
     
-  
-  };
+    //OpenGL variables for a block
+    struct {
+      GLuint vao;           //Vertex array object
+      GLuint program;       //shader program
+      GLuint buffer;        //Vertex buffer objects
+      GLuint vertex_shader, fragment_shader;  //Shaders
+      GLint vpos_location, vcolor_location;   //reference to pos and color in shaders
+      GLint M_location;     //Reference to matrix in shader
+    } GLvars;
+    
+
+   public:
+        
+    //Board Constructor for initial spawn state
+    board();
+    
+    //Initialize the gl state and variables
+    void gl_init();
+    
+    //Draw the board
+    void draw(mat4 proj);
+
+};
  
 
 #endif /* board_hpp */

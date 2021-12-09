@@ -34,7 +34,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 
 void init(){
   
-  glClearColor(1.0, 1.0, 1.0, 1.0);
+  glClearColor(0.0, 0.0, 0.0, 1.0);
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
   //board.init();
