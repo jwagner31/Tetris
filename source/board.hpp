@@ -24,8 +24,8 @@ using namespace Angel;
 class board{
 public:
     //11 top 11 bottom 21 left right 21 right
-    vec2 board_vert[4];
-    vec3 board_color[4];
+    vec2 board_vert[64];
+    vec3 board_color[64];
     
     //OpenGL variables for a block
     struct {

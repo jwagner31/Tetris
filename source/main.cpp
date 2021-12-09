@@ -4,7 +4,7 @@ using namespace Angel;
 
 //board board;
 shape joe;
-
+board game;
 static void error_callback(int error, const char* description)
 {
   fprintf(stderr, "Error: %s\n", description);
@@ -39,6 +39,7 @@ void init(){
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
   //board.init();
   joe.init();
+  game.gl_init();
 }
 
 int main(void)
@@ -87,8 +88,8 @@ int main(void)
     glClear(GL_COLOR_BUFFER_BIT);
     
     //board.draw(proj);
-    joe.draw(proj);
-    
+    //joe.draw(proj);
+    game.draw(proj);
     glfwSwapBuffers(window);
     glfwPollEvents();
     
