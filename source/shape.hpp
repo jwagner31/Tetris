@@ -34,8 +34,8 @@ using namespace Angel;
 class shape{
   
   struct{
-    int numBlocks; //Keeps track of figure's blocks, 0 signifies block does not exist yet
-    block (*shapeBlocks)[4]; //Points to pointer to array of blocks
+    int blockCount; //Keeps track of figure's total blocks, 0 signifies a shape does not exist yet
+    std::vector<block> shapeBlocks; //Points to pointer to array of blocks
   } state;
   
  public:

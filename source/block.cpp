@@ -28,6 +28,12 @@ using namespace Angel;
 
   };
 
+  block::block(float x, float y){
+    loc = vec2(x, y);
+    color = vec3(1.0, 0.0, 0.0);
+
+  };
+
 void block::gl_init(){
 
   block_vert[0] = vec2(0.0, 0.0);

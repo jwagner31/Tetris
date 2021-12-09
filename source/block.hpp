@@ -55,6 +55,9 @@ class block{
   //Block Constructor for initial spawn state
   block();
   
+  //Block Constructor based on x and y location
+  block(float x, float y);
+  
   //Initialize the gl state and variables
   void gl_init();
   
