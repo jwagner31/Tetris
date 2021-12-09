@@ -33,16 +33,23 @@ void shape::init(){
   if(state.shapeBlocks.empty()){
     state.blockCount = 4;
     for(int i = 0; i < state.blockCount; i++){
-      
+      block temp(-2.0 + i, 10.0);
+      temp.gl_init();
+      state.shapeBlocks.push_back(temp);
     }
   }
 }
 
 //Draw a shape by drawing the four blocks in shapeBlocks
-void draw(mat4 proj);
+void shape::draw(mat4 proj){
+  for(int i = 0; i < state.blockCount; i++){
+    state.shapeBlocks[i].draw(proj);
+  }
+}
 
 //Getter Function for Shape
-block getBlock(int i);
+//block getBlock(int i)
+
 /*
 //Draw a block
 void block::draw(mat4 proj){

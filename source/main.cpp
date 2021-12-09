@@ -3,7 +3,7 @@
 using namespace Angel;
 
 //board board;
-block piece;
+shape joe;
 
 static void error_callback(int error, const char* description)
 {
@@ -38,8 +38,7 @@ void init(){
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
   //board.init();
-  
-  piece.gl_init();
+  joe.init();
 }
 
 int main(void)
@@ -88,7 +87,7 @@ int main(void)
     glClear(GL_COLOR_BUFFER_BIT);
     
     //board.draw(proj);
-    piece.draw(proj);
+    joe.draw(proj);
     
     glfwSwapBuffers(window);
     glfwPollEvents();
