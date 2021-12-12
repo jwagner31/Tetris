@@ -34,6 +34,27 @@ using namespace Angel;
 
   };
 
+  bool block::moveTest(int direction){
+    return true;
+  }
+
+  //Move block in given direction 0=down, 1=left, 2=right
+  void block::move(int direction){
+    if(moveTest(direction)){
+      //Move Down
+      if(direction == 0){
+        setLocation(getLocation().x, getLocation().y-1);
+      }
+      if(direction == 1){
+        setLocation(getLocation().x-1, getLocation().y);
+      }
+      if(direction == 2){
+        setLocation(getLocation().x+1, getLocation().y);
+      }
+    }
+  }
+
+
 void block::gl_init(){
 
   block_vert[0] = vec2(0.0, 0.0);

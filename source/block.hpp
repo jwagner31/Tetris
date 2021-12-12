@@ -64,6 +64,12 @@ class block{
   //Draw a single block
   void draw(mat4 proj);
   
+  //Test if block can move in this direction
+  bool moveTest(int direction);
+
+  //Move block in given direction 0=down, 1=left, 2=right
+  void move(int direction);
+  
   inline vec2 getLocation(){
     return loc;
   }
