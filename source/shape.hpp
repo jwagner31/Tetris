@@ -46,6 +46,12 @@ class shape{
   //Shape Initializer
   void init();
   
+  //Test if shape can move in this direction
+  bool moveTest(int direction);
+
+  //Move shape in given direction 0=down, 1=left, 2=right
+  void move(int direction);
+  
   //Draw a shape by drawing the four blocks in shapeBlocks
   void draw(mat4 proj);
   

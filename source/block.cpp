@@ -35,7 +35,22 @@ using namespace Angel;
   };
 
   bool block::moveTest(int direction){
-    return true;
+    if(direction == 0){
+      if(getLocation().y-1 >= -9.0){
+        return true;
+      }
+    }
+    if(direction == 1){
+      if(getLocation().x-1 >= -5.0){
+        return true;
+      }
+    }
+    if(direction == 2){
+      if(getLocation().x+1 <= 4.0){
+        return true;
+      }
+    }
+    return false;
   }
 
   //Move block in given direction 0=down, 1=left, 2=right

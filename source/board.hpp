@@ -47,6 +47,10 @@ class board{
     //Board Constructor for initial spawn state
     board();
   
+  int getJ(float x);
+
+  int getI(float y);
+  
     //Add Block to board based on current loc of block
     void addBlock(block block);
   

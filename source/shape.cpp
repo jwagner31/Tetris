@@ -40,6 +40,26 @@ void shape::init(){
   }
 }
 
+ //Test if shape can move in this direction
+ bool shape::moveTest(int direction){
+  for(int i = 0; i < 4; i++){
+    bool test = state.shapeBlocks[i].moveTest(direction);
+    if(test == false){
+      return test;
+    }
+  }
+  return true;
+ }
+
+ //Move shape in given direction 0=down, 1=left, 2=right
+void shape::move(int direction){
+  if()
+  for(int i = 0; i < 4; i++){
+    state.shapeBlocks[i].move(direction);
+  }
+}
+
+
 block shape::getBlock(int index){
   return state.shapeBlocks[index];
 }

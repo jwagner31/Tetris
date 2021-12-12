@@ -16,7 +16,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     glfwSetWindowShouldClose(window, GLFW_TRUE);
   if (key == GLFW_KEY_LEFT && (action == GLFW_PRESS || action == GLFW_REPEAT))
-    //ship.rotateLeft();
+    block.move(1);
   if (key == GLFW_KEY_RIGHT && (action == GLFW_PRESS || action == GLFW_REPEAT))
     //ship.rotateRight();
   if (key == GLFW_KEY_SPACE){
@@ -91,6 +91,7 @@ int main(void)
     glClear(GL_COLOR_BUFFER_BIT);
     
     //joe.draw(proj);
+    block.draw(proj);
     game.draw(proj);
     glfwSwapBuffers(window);
     glfwPollEvents();

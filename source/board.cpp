@@ -40,7 +40,13 @@ board::board() {
    */
 };
 
+int board::getJ(float x){
+  return x + 5;
+}
 
+int board::getI(float y){
+  return (y-10)*-1;
+}
 
 void board::addBlock(block block){
   int j = block.loc.x + 5;
