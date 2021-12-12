@@ -50,7 +50,10 @@ class shape{
   void draw(mat4 proj);
   
   //Getter Function for Shape
-  //block getBlock(int i);
+  block getBlock(int index);
+  
+  //Add block at specified index
+  void addBlock(block block, int index);
   
 };
 

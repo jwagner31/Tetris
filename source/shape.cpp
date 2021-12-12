@@ -40,6 +40,15 @@ void shape::init(){
   }
 }
 
+block shape::getBlock(int index){
+  return state.shapeBlocks[index];
+}
+
+void shape::addBlock(block block, int index){
+  state.shapeBlocks[index] = block;
+}
+
+
 //Draw a shape by drawing the four blocks in shapeBlocks
 void shape::draw(mat4 proj){
   for(int i = 0; i < state.blockCount; i++){

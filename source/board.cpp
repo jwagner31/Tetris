@@ -30,12 +30,34 @@ using namespace Angel;
 #include "shape.hpp"
 #include "board.hpp"
 
-board::board() {};
+board::board() {
+  /*
+  for(int i = 0; i < 20; i++){
+    for(int j = 0; j < 10; j++){
+      grid[i][j] = ;
+    }
+  }
+   */
+};
+
+
+
+void board::addBlock(block block){
+  int j = block.loc.x + 5;
+  int i = (block.loc.y - 10)*-1;
+  grid[i][j] = block;
+}
+
+void board::addShape(shape shape){
+  for(int index = 0; index < 4; index++){
+    addBlock(shape.getBlock(index));
+  }
+}
 
 void board::gl_init(){
 
-  for(int i = 0; i < 44; i++){
-    float height = 0.0;
+  float height = -10.0;
+  for(int i = 0; i < 42; i++){
     if(i%2 == 0){
       board_vert[i] = vec2(-5.0, height);
     }
@@ -44,8 +66,9 @@ void board::gl_init(){
       height++;
     }
   }
-  for(int j = 44; j < 64 ; j++){
-    float width = -5.0;
+  
+  float width = -5.0;
+  for(int j = 42; j < 64 ; j++){
     if(j%2 == 0){
       board_vert[j] = vec2(width, 10.0);
     }
@@ -97,33 +120,39 @@ void board::gl_init(){
   //Set GL state to use this buffer
   glBindBuffer( GL_ARRAY_BUFFER, GLvars.buffer );
   
-  //Create GPU buffer to hold vertices and color
-  glBufferData( GL_ARRAY_BUFFER, sizeof(board_vert) + sizeof(board_vert), NULL, GL_STATIC_DRAW );
-  //First part of array holds vertices
-  glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(board_vert), board_vert );
-  //Second part of array hold colors (offset by sizeof(triangle))
-  glBufferSubData( GL_ARRAY_BUFFER, sizeof(board_vert), sizeof(board_vert), board_color );
-  
-  glEnableVertexAttribArray(GLvars.vpos_location);
-  glEnableVertexAttribArray(GLvars.vcolor_location );
-  
-  glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
-  glVertexAttribPointer( GLvars.vcolor_location, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(board_vert)) );
-  
-  glBindVertexArray(0);
+   //Create GPU buffer to hold vertices and color
+    glBufferData( GL_ARRAY_BUFFER, sizeof(board_vert) + sizeof(board_color), NULL, GL_STATIC_DRAW );
+    //First part of array holds vertices
+    glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(board_vert), board_vert );
+    //Second part of array hold colors (offset by sizeof(triangle))
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(board_vert), sizeof(board_color), board_color );
+    
+    glEnableVertexAttribArray(GLvars.vpos_location);
+    glEnableVertexAttribArray(GLvars.vcolor_location );
+    
+    glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
+    glVertexAttribPointer( GLvars.vcolor_location, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(board_vert)) );
+    
+    glBindVertexArray(0);
 
-}
+  }
 
-//Draw a block
+//Draw the Board
 void board::draw(mat4 proj){
   
   glUseProgram( GLvars.program );
   glBindVertexArray( GLvars.vao );
   
   glUniformMatrix4fv( GLvars.M_location, 1, GL_TRUE, proj);
+
+  glDrawArrays(GL_LINES, 0, 64);
   
   //Draw something
-  glDrawArrays(GL_LINES, 0, 64);
+  for(int i = 0; i < 20; i++){
+    for(int j = 0; j < 10; j++){
+      grid[i][j].draw(proj);
+    }
+  }
   
   
   glBindVertexArray(0);

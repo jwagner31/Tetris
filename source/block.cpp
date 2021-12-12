@@ -30,7 +30,7 @@ using namespace Angel;
 
   block::block(float x, float y){
     loc = vec2(x, y);
-    color = vec3(0.0, 0.0, 0.8);
+    color = vec3(0.8, 0.0, 0.0);
 
   };
 
