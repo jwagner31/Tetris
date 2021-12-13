@@ -43,19 +43,33 @@ class board{
   
     //2d Array representing Board
     block grid[20][10];
+  
+    //Current shape being controlled by user
+    shape currShape;
         
     //Board Constructor for initial spawn state
     board();
   
-  int getJ(float x);
+    //Convert x coord to board vector position
+    int getJ(float x);
 
-  int getI(float y);
+    //Convert y coord to board vector position
+    int getI(float y);
+  
+    //Convert j position to x coord
+    float getX(int j);
+
+    //Convert i position to y coord
+    float getY(int i);
   
     //Add Block to board based on current loc of block
     void addBlock(block block);
   
     //Add Shape to board based on each block's current loc
     void addShape(shape shape);
+    
+    //Checks if color at specified board position is black, signifying empty spot
+    bool isEmpty(int i, int j);
     
     //Initialize the gl state and variables
     void gl_init();

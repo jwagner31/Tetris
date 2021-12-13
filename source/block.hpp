@@ -61,7 +61,7 @@ class block{
   //Initialize the gl state and variables
   void gl_init();
   
-  //Draw a single block
+  //Draw a single block, do not draw if color is black
   void draw(mat4 proj);
   
   //Test if block can move in this direction
@@ -70,6 +70,7 @@ class block{
   //Move block in given direction 0=down, 1=left, 2=right
   void move(int direction);
   
+  //Remove
   inline vec2 getLocation(){
     return loc;
   }

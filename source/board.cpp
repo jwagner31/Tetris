@@ -31,13 +31,14 @@ using namespace Angel;
 #include "board.hpp"
 
 board::board() {
-  /*
+  //Initialize board array with black blocks representing nonexistent blocks
   for(int i = 0; i < 20; i++){
     for(int j = 0; j < 10; j++){
-      grid[i][j] = ;
+      block filler(getX(j), getY(i));
+      filler.setColor(0.0, 0.0, 0.0);
+      grid[i][j] = filler;
     }
   }
-   */
 };
 
 int board::getJ(float x){
@@ -46,6 +47,14 @@ int board::getJ(float x){
 
 int board::getI(float y){
   return (y-10)*-1;
+}
+
+float board::getX(int j){
+  return j - 5.0;
+}
+
+float board::getY(int i){
+  return (i*-1.0)+10.0;
 }
 
 void board::addBlock(block block){
@@ -156,7 +165,9 @@ void board::draw(mat4 proj){
   //Draw something
   for(int i = 0; i < 20; i++){
     for(int j = 0; j < 10; j++){
-      grid[i][j].draw(proj);
+      if(isEmpty(i, j)){
+        grid[i][j].draw(proj);
+      }
     }
   }
   

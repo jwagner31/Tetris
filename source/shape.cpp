@@ -46,6 +46,7 @@ void shape::init(){
     bool test = state.shapeBlocks[i].moveTest(direction);
     if(test == false){
       return test;
+      break;
     }
   }
   return true;
@@ -53,7 +54,7 @@ void shape::init(){
 
  //Move shape in given direction 0=down, 1=left, 2=right
 void shape::move(int direction){
-  if()
+  if(moveTest(direction))
   for(int i = 0; i < 4; i++){
     state.shapeBlocks[i].move(direction);
   }
