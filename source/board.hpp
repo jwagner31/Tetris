@@ -68,9 +68,18 @@ class board{
     //Add Shape to board based on each block's current loc
     void addShape(shape shape);
     
-    //Checks if color at specified board position is black, signifying empty spot
+    //Checks if block at position exists
     bool isEmpty(int i, int j);
+  
+    //Sets block exists variable to false
+    void deleteBlock(int i, int j);
+  
+    //Move Test for Shape
+    bool moveTest(int direction);
     
+    //Move current shape
+    void move(int direction);
+  
     //Initialize the gl state and variables
     void gl_init();
     

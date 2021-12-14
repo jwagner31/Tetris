@@ -25,12 +25,14 @@ using namespace Angel;
   block::block(){
     loc = vec2(0.0, 10.0);
     color = vec3(0.0, 1.0, 0.0);
+    exists = true;
 
   };
 
   block::block(float x, float y){
     loc = vec2(x, y);
     color = vec3(0.8, 0.0, 0.0);
+    exists = true;
 
   };
 

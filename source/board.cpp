@@ -69,6 +69,18 @@ void board::addShape(shape shape){
   }
 }
 
+  //Checks if block at position exists
+  bool isEmpty(int i, int j);
+
+  //Sets block exists variable to false
+  void deleteBlock(int i, int j);
+
+  //Move Test for Shape
+  bool moveTest(int direction);
+  
+  //Move current shape
+  void move(int direction);
+
 void board::gl_init(){
 
   float height = -10.0;

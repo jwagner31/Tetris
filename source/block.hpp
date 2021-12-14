@@ -51,6 +51,7 @@ class block{
   //Current values for the block
   vec2 loc;
   vec3 color;
+  bool exists;
   
   //Block Constructor for initial spawn state
   block();
