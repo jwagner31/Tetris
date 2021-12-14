@@ -3,8 +3,7 @@
 using namespace Angel;
 
 //board board;
-shape joe;
-block block(0, 0);
+shape shape;
 board game;
 static void error_callback(int error, const char* description)
 {
@@ -16,9 +15,12 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
     glfwSetWindowShouldClose(window, GLFW_TRUE);
   if (key == GLFW_KEY_LEFT && (action == GLFW_PRESS || action == GLFW_REPEAT))
-    block.move(1);
+    //block.move(1);
+    game.move(1);
   if (key == GLFW_KEY_RIGHT && (action == GLFW_PRESS || action == GLFW_REPEAT))
-    //ship.rotateRight();
+    game.move(2);
+  if (key == GLFW_KEY_DOWN && (action == GLFW_PRESS || action == GLFW_REPEAT))
+    game.move(0);
   if (key == GLFW_KEY_SPACE){
     if(action == GLFW_PRESS){
       //ship.start_thruster();
@@ -38,11 +40,12 @@ void init(){
   glClearColor(0.0, 0.0, 0.0, 1.0);
   glHint (GL_LINE_SMOOTH_HINT, GL_NICEST);
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
-  joe.init();
+  //joe.init();
   game.gl_init();
-  block.gl_init();
-  game.addBlock(block);
-  game.addShape(joe);
+  shape.init();
+  //block.gl_init();
+  //game.addBlock(block);
+  //game.addShape(joe);
 }
 
 int main(void)
@@ -91,7 +94,10 @@ int main(void)
     glClear(GL_COLOR_BUFFER_BIT);
     
     //joe.draw(proj);
-    block.draw(proj);
+    //block.draw(proj);
+    game.addShape(shape);
+    game.currShape = shape;
+    
     game.draw(proj);
     glfwSwapBuffers(window);
     glfwPollEvents();

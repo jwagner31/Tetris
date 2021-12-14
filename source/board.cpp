@@ -35,10 +35,12 @@ board::board() {
   for(int i = 0; i < 20; i++){
     for(int j = 0; j < 10; j++){
       block filler(getX(j), getY(i));
-      filler.setColor(0.0, 0.0, 0.0);
+      filler.exists = false;
       grid[i][j] = filler;
     }
   }
+  //currShape.init();
+  
 };
 
 int board::getJ(float x){
@@ -70,16 +72,57 @@ void board::addShape(shape shape){
 }
 
   //Checks if block at position exists
-  bool isEmpty(int i, int j);
+  bool board::isEmpty(int i, int j){
+    return !grid[i][j].exists;
+  }
 
   //Sets block exists variable to false
-  void deleteBlock(int i, int j);
+  void board::deleteBlock(int i, int j){
+    grid[i][j].exists = false;
+  }
 
   //Move Test for Shape
-  bool moveTest(int direction);
+  bool board::moveTest(int direction){
+    shape tempShape = currShape;
+    bool boundaryCheck = tempShape.moveTest(direction);
+    if(boundaryCheck){
+      tempShape.move(direction);
+      bool arrayCheck = true;
+      //Check if there is block where tempShape would be
+      for(int k = 0; k < 4; k++){
+        int i = getI(tempShape.getBlock(k).getLocation().x);
+        int j = getJ(tempShape.getBlock(k).getLocation().y);
+        arrayCheck = isEmpty(i, j);
+        if(arrayCheck == false){
+          return arrayCheck;
+          break;
+        }
+      }
+    }else{
+      return boundaryCheck;
+    }
+    
+  }
   
   //Move current shape
-  void move(int direction);
+void board::move(int direction){
+  if(moveTest(direction)){
+    shape newShape = currShape;
+    newShape.move(direction);
+    //Take shape out of grid
+    for(int k = 0; k < 4; k++){
+      int i = getI(currShape.getBlock(k).getLocation().x);
+      int j = getJ(currShape.getBlock(k).getLocation().y);
+      deleteBlock(i, j);
+    }
+    
+    //Put moved shape into grid
+    for(int k = 0; k < 4; k++){
+      addBlock(newShape.getBlock(k));
+    }
+    currShape = newShape;
+  }
+}
 
 void board::gl_init(){
 
@@ -177,7 +220,7 @@ void board::draw(mat4 proj){
   //Draw something
   for(int i = 0; i < 20; i++){
     for(int j = 0; j < 10; j++){
-      if(isEmpty(i, j)){
+      if(!isEmpty(i, j)){
         grid[i][j].draw(proj);
       }
     }
