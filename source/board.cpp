@@ -31,7 +31,7 @@ using namespace Angel;
 #include "board.hpp"
 
 board::board() {
-  //Initialize board array with black blocks representing nonexistent blocks
+  //Initialize board array with false exists blocks representing nonexistent blocks
   for(int i = 0; i < 20; i++){
     for(int j = 0; j < 10; j++){
       block filler(getX(j), getY(i));
@@ -67,11 +67,6 @@ void board::addBlock(block block){
   grid[i][j] = block;
 }
 
-void board::addShape(shape shape){
-  for(int index = 0; index < 4; index++){
-    addBlock(shape.getBlock(index));
-  }
-}
 
 
 
@@ -85,7 +80,7 @@ void board::addShape(shape shape){
     grid[i][j].exists = false;
   }
 
-  //Move Test for Shape
+  //Move Test for Shape by boundaries and against blocks array
   bool board::moveTest(int direction){
     shape tempShape = currShape;
     bool boundaryCheck = tempShape.moveTest(direction);
@@ -102,29 +97,17 @@ void board::addShape(shape shape){
           break;
         }
       }
+      return true;
     }else{
       return boundaryCheck;
     }
     
   }
   
-  //Move current shape
+//Move current shape
 void board::move(int direction){
   if(moveTest(direction)){
-    shape newShape = currShape;
-    newShape.move(direction);
-    //Take shape out of grid
-    for(int k = 0; k < 4; k++){
-      int i = getI(currShape.getBlock(k).getLocation().y);
-      int j = getJ(currShape.getBlock(k).getLocation().x);
-      deleteBlock(i, j);
-    }
-    
-    //Put moved shape into grid
-    for(int k = 0; k < 4; k++){
-      addBlock(newShape.getBlock(k));
-    }
-    currShape = newShape;
+    currShape.move(direction);
   }
 }
 

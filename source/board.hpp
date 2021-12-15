@@ -67,8 +67,6 @@ class board{
     //Add Block to board based on current loc of block
     void addBlock(block block);
   
-    //Add Shape to board based on each block's current loc
-    void addShape(shape shape);
     
     //Checks if block at position exists
     bool isEmpty(int i, int j);

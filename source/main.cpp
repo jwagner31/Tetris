@@ -42,6 +42,7 @@ void init(){
   //joe.init();
   game.gl_init();
   game.init();
+ 
   //block.gl_init();
   //game.addBlock(block);
   //game.addShape(joe);
@@ -97,8 +98,8 @@ int main(void)
     
     //joe.draw(proj);
     //block.draw(proj);
-    
     game.draw(proj);
+    //shape.draw(proj);
     glfwSwapBuffers(window);
     glfwPollEvents();
     
