@@ -38,10 +38,12 @@ board::board() {
       filler.exists = false;
       grid[i][j] = filler;
     }
-  }
-  //currShape.init();
-  
+  }  
 };
+
+void board::init(){
+  currShape.init();
+}
 
 int board::getJ(float x){
   return x + 5;
@@ -71,6 +73,8 @@ void board::addShape(shape shape){
   }
 }
 
+
+
   //Checks if block at position exists
   bool board::isEmpty(int i, int j){
     return !grid[i][j].exists;
@@ -90,8 +94,8 @@ void board::addShape(shape shape){
       bool arrayCheck = true;
       //Check if there is block where tempShape would be
       for(int k = 0; k < 4; k++){
-        int i = getI(tempShape.getBlock(k).getLocation().x);
-        int j = getJ(tempShape.getBlock(k).getLocation().y);
+        int i = getI(tempShape.getBlock(k).getLocation().y);
+        int j = getJ(tempShape.getBlock(k).getLocation().x);
         arrayCheck = isEmpty(i, j);
         if(arrayCheck == false){
           return arrayCheck;
@@ -111,8 +115,8 @@ void board::move(int direction){
     newShape.move(direction);
     //Take shape out of grid
     for(int k = 0; k < 4; k++){
-      int i = getI(currShape.getBlock(k).getLocation().x);
-      int j = getJ(currShape.getBlock(k).getLocation().y);
+      int i = getI(currShape.getBlock(k).getLocation().y);
+      int j = getJ(currShape.getBlock(k).getLocation().x);
       deleteBlock(i, j);
     }
     
@@ -225,6 +229,7 @@ void board::draw(mat4 proj){
       }
     }
   }
+  currShape.draw(proj);
   
   
   glBindVertexArray(0);

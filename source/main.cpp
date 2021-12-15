@@ -3,7 +3,6 @@
 using namespace Angel;
 
 //board board;
-shape shape;
 board game;
 static void error_callback(int error, const char* description)
 {
@@ -42,10 +41,13 @@ void init(){
   glHint (GL_POINT_SMOOTH_HINT, GL_NICEST);
   //joe.init();
   game.gl_init();
-  shape.init();
+  game.init();
   //block.gl_init();
   //game.addBlock(block);
   //game.addShape(joe);
+  //shape.init();
+  //game.addShape(shape);
+  //game.currShape = shape;
 }
 
 int main(void)
@@ -95,8 +97,6 @@ int main(void)
     
     //joe.draw(proj);
     //block.draw(proj);
-    game.addShape(shape);
-    game.currShape = shape;
     
     game.draw(proj);
     glfwSwapBuffers(window);

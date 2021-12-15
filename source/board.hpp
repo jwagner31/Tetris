@@ -50,6 +50,8 @@ class board{
     //Board Constructor for initial spawn state
     board();
   
+    void init();
+
     //Convert x coord to board vector position
     int getJ(float x);
 

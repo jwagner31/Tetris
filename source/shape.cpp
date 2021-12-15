@@ -35,6 +35,7 @@ void shape::init(){
     for(int i = 0; i < state.blockCount; i++){
       block temp(-2.0 + i, 10.0);
       temp.gl_init();
+      temp.exists = true;
       state.shapeBlocks.push_back(temp);
     }
   }
@@ -72,9 +73,11 @@ void shape::addBlock(block block, int index){
 
 //Draw a shape by drawing the four blocks in shapeBlocks
 void shape::draw(mat4 proj){
-  for(int i = 0; i < state.blockCount; i++){
-    state.shapeBlocks[i].draw(proj);
-  }
+    for(int i = 0; i < state.blockCount; i++){
+      if(state.shapeBlocks[i].exists){
+        state.shapeBlocks[i].draw(proj);
+      }
+    }
 }
 
 //Getter Function for Shape
