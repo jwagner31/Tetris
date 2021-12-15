@@ -43,14 +43,11 @@ board::board() {
 
 void board::init(){
   currShape.init();
-  //block testBlock(getX(5),getY(10));
-  //grid[10][5] = testBlock;
   for(int i = 0; i < 20; i++){
     for(int j = 0; j < 10; j++){
       grid[i][j].gl_init();
     }
   }
-  grid[10][5].exists = true;
 }
 
 int board::getJ(float x){
@@ -72,7 +69,8 @@ float board::getY(int i){
 void board::addBlock(block block){
   int j = block.loc.x + 5;
   int i = (block.loc.y - 10)*-1;
-  grid[i][j] = block;
+  grid[i][j].exists = true;
+  grid[i][j].color = block.getColor();
 }
 
 
