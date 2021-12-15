@@ -24,7 +24,7 @@ using namespace Angel;
   //Block Constructor
   block::block(){
     loc = vec2(0.0, 0.0);
-    color = vec3(0.0, 1.0, 0.0);
+    color = vec3(0.0, 0.0, 1.0);
     exists = true;
 
   };

@@ -38,11 +38,19 @@ board::board() {
       filler.exists = false;
       grid[i][j] = filler;
     }
-  }  
+  }
 };
 
 void board::init(){
   currShape.init();
+  //block testBlock(getX(5),getY(10));
+  //grid[10][5] = testBlock;
+  for(int i = 0; i < 20; i++){
+    for(int j = 0; j < 10; j++){
+      grid[i][j].gl_init();
+    }
+  }
+  grid[10][5].exists = true;
 }
 
 int board::getJ(float x){
