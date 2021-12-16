@@ -20,6 +20,8 @@ using namespace Angel;
 
 #include "shader.h"
 #include "block.hpp"
+#include "lodepng.h"
+#include "SourcePath.h"
 
   //Block Constructor
   block::block(){

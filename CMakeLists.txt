@@ -33,6 +33,10 @@ add_executable(tetris WIN32 MACOSX_BUNDLE
 	source/utils/vec.h
 	source/utils/u8names.h
 	source/utils/u8names.cpp
+	source/lodepng.cpp
+	source/lodepng.h
+	source/SourcePath.cpp.in
+	source/SourcePath.h
 	shaders/shader.cpp
 	source/main.cpp
 	source/board.cpp
