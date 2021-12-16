@@ -95,6 +95,35 @@ void block::rotate(int orientation, vec2 centroidBlock){
   
 }
 
+void loadFreeImageTexture(const char* lpszPathName, GLuint textureID, GLuint GLtex) {
+
+    std::vector<unsigned char> image;
+    unsigned int width;
+    unsigned int height;
+    //decode
+
+  
+    /* the image "shall" be in RGBA_U8 format */
+
+    std::cout << "Image loaded: " << width << " x " << height << std::endl;
+    std::cout << image.size() << " pixels.\n";
+    std::cout << "Image has " << image.size() / (width * height) << "color values per pixel.\n";
+
+    GLint GL_format = GL_RGBA;
+
+    glActiveTexture(GLtex);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_format, width, height, 0, GL_format, GL_UNSIGNED_BYTE, &image[0]);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    //Put things away and free memory
+    image.clear();
+}
+
 
 void block::gl_init(){
 
@@ -110,6 +139,48 @@ void block::gl_init(){
 
   std::string vshader = shader_path + "vshader_block.glsl";
   std::string fshader = shader_path + "fshader_block.glsl";
+
+  // Texture objects references
+  GLuint green_block;
+  GLuint green2_block;
+  GLuint pink_block;
+  GLuint purple_block;
+  GLuint teal_block;
+  GLuint yellow_block;
+
+
+  glGenTextures(1, &green_block);
+  glGenTextures(1, &green2_block);
+  glGenTextures(1, &pink_block);
+  glGenTextures(1, &purple_block);
+  glGenTextures(1, &teal_block);
+  glGenTextures(1, &yellow_block);
+
+  std::string greenBlock = source_path + "/images/world.200405.3.png";
+  loadFreeImageTexture(greenBlock.c_str(), green_block, GL_TEXTURE0);
+
+  glUniform1i(glGetUniformLocation(program, "textureEarth"), 0);
+
+  //TODO: ADD CLOUD TEXTURE
+
+  std::string cloud_img = source_path + "/images/cloud_combined.png";
+  loadFreeImageTexture(cloud_img.c_str(), cloud_texture, GL_TEXTURE2);
+
+  glUniform1i(glGetUniformLocation(program, "textureCloud"), 2);
+
+  //TODO: ADD NIGHT TEXTURE
+  std::string night_img = source_path + "/images/BlackMarble.png";
+  loadFreeImageTexture(night_img.c_str(), night_texture, GL_TEXTURE1);
+
+  glUniform1i(glGetUniformLocation(program, "textureNight"), 1);
+
+  //TODO: ADD NOISE TEXTURE
+  std::string perlin_img = source_path + "/images/perlin_noise.png";
+  loadFreeImageTexture(perlin_img.c_str(), perlin_texture, GL_TEXTURE3);
+
+  glUniform1i(glGetUniformLocation(program, "texturePerlin"), 3);
+
+
   
   GLchar* vertex_shader_source = readShaderSource(vshader.c_str());
   GLchar* fragment_shader_source = readShaderSource(fshader.c_str());
