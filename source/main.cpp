@@ -92,8 +92,10 @@ int main(void)
     //(left, right, top, bottom)
     mat4 proj = Ortho2D(-10.0, 10.0, -10.0, 10.0);
     
-    //animate();
-    
+    if(glfwGetTime() > 0.5){
+      glfwSetTime(0.0);
+      game.animate();
+    }
     glClear(GL_COLOR_BUFFER_BIT);
     
     //joe.draw(proj);

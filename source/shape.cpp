@@ -30,14 +30,150 @@ shape::shape(){
 
 //Shape Initializer
 void shape::init(){
-  if(state.shapeBlocks.empty()){
     state.blockCount = 4;
-    for(int i = 0; i < state.blockCount; i++){
-      block temp(-2.0 + i, 10.0);
-      temp.gl_init();
-      temp.exists = true;
-      state.shapeBlocks.push_back(temp);
-    }
+  //I
+  if(rand == 0){
+      block tempOne(-2.0, 10.0);
+      block tempTwo(-1.0, 10.0);
+      block tempThree(0, 10.0);
+      block tempFour(1.0, 10.0);
+    tempOne.setColor(0.0, 1.0, 1.0);
+    tempTwo.setColor(0.0, 1.0, 1.0);
+    tempThree.setColor(0.0, 1.0, 1.0);
+    tempFour.setColor(0.0, 1.0, 1.0);
+    tempOne.gl_init();
+    tempTwo.gl_init();
+    tempThree.gl_init();
+    tempFour.gl_init();
+    state.shapeBlocks.push_back(tempOne);
+    state.shapeBlocks.push_back(tempTwo);
+    state.shapeBlocks.push_back(tempThree);
+    state.shapeBlocks.push_back(tempFour);
+  }
+  //J
+  if(rand == 1){
+     block tempOne(-1.0, 10.0);
+      block tempTwo(-1.0, 9.0);
+      block tempThree(0, 9.0);
+      block tempFour(1.0, 9.0);
+    tempOne.setColor(0.0, 0.0, 1.0);
+    tempTwo.setColor(0.0, 0.0, 1.0);
+    tempThree.setColor(0.0, 0.0, 1.0);
+    tempFour.setColor(0.0, 0.0, 1.0);
+    tempOne.gl_init();
+    tempTwo.gl_init();
+    tempThree.gl_init();
+    tempFour.gl_init();
+    state.shapeBlocks.push_back(tempOne);
+    state.shapeBlocks.push_back(tempTwo);
+    state.shapeBlocks.push_back(tempThree);
+    state.shapeBlocks.push_back(tempFour);
+  }
+  //L
+  if(rand == 2){
+  block tempOne(1.0, 10.0);
+  block tempTwo(1.0, 9.0);
+  block tempThree(0, 9.0);
+  block tempFour(-1.0, 9.0);
+    tempOne.setColor(1.0, 0.5, 0.0);
+    tempTwo.setColor(1.0, 0.5, 0.0);
+    tempThree.setColor(1.0, 0.5, 0.0);
+    tempFour.setColor(1.0, 0.5, 0.0);
+    tempOne.gl_init();
+    tempTwo.gl_init();
+    tempThree.gl_init();
+    tempFour.gl_init();
+    state.shapeBlocks.push_back(tempOne);
+    state.shapeBlocks.push_back(tempTwo);
+    state.shapeBlocks.push_back(tempThree);
+    state.shapeBlocks.push_back(tempFour);
+  }
+  //o
+  if(rand == 3){
+  block tempOne(0.0, 10.0);
+  block tempTwo(0.0, 9.0);
+  block tempThree(1.0, 10.0);
+  block tempFour(1.0, 9.0);
+    tempOne.setColor(1.0, 1.0, 0.0);
+    tempTwo.setColor(1.0, 1.0, 0.0);
+    tempThree.setColor(1.0, 1.0, 0.0);
+    tempFour.setColor(1.0, 1.0, 0.0);
+    tempOne.gl_init();
+    tempTwo.gl_init();
+    tempThree.gl_init();
+    tempFour.gl_init();
+    state.shapeBlocks.push_back(tempOne);
+    state.shapeBlocks.push_back(tempTwo);
+    state.shapeBlocks.push_back(tempThree);
+    state.shapeBlocks.push_back(tempFour);
+  }
+  //s
+  if(rand == 4){
+  block tempOne(-1.0, 9.0);
+  block tempTwo(0.0, 9.0);
+  block tempThree(0.0, 10.0);
+  block tempFour(1.0, 10.0);
+    tempOne.setColor(0.0, 1.0, 0.0);
+    tempTwo.setColor(0.0, 1.0, 0.0);
+    tempThree.setColor(0.0, 1.0, 0.0);
+    tempFour.setColor(0.0, 1.0, 0.0);
+    tempOne.gl_init();
+    tempTwo.gl_init();
+    tempThree.gl_init();
+    tempFour.gl_init();
+    state.shapeBlocks.push_back(tempOne);
+    state.shapeBlocks.push_back(tempTwo);
+    state.shapeBlocks.push_back(tempThree);
+    state.shapeBlocks.push_back(tempFour);
+  }
+  //T
+  if(rand == 5){
+  block tempOne(-1.0, 9.0);
+  block tempTwo(0.0, 9.0);
+  block tempThree(0.0, 10.0);
+  block tempFour(1.0, 9.0);
+    tempOne.setColor(1.0, 0.0, 1.0);
+    tempTwo.setColor(1.0, 0.0, 1.0);
+    tempThree.setColor(1.0, 0.0, 1.0);
+    tempFour.setColor(1.0, 0.0, 1.0);
+    tempOne.gl_init();
+    tempTwo.gl_init();
+    tempThree.gl_init();
+    tempFour.gl_init();
+    state.shapeBlocks.push_back(tempOne);
+    state.shapeBlocks.push_back(tempTwo);
+    state.shapeBlocks.push_back(tempThree);
+    state.shapeBlocks.push_back(tempFour);
+  }
+  //Z
+  if(rand == 6){
+  block tempOne(-1.0, 10.0);
+  block tempTwo(0.0, 10.0);
+  block tempThree(0.0, 9.0);
+  block tempFour(1.0, 9.0);
+    tempOne.setColor(1.0, 0.0, 0.0);
+    tempTwo.setColor(1.0, 0.0, 0.0);
+    tempThree.setColor(1.0, 0.0, 0.0);
+    tempFour.setColor(1.0, 0.0, 0.0);
+    tempOne.gl_init();
+    tempTwo.gl_init();
+    tempThree.gl_init();
+    tempFour.gl_init();
+    state.shapeBlocks.push_back(tempOne);
+    state.shapeBlocks.push_back(tempTwo);
+    state.shapeBlocks.push_back(tempThree);
+    state.shapeBlocks.push_back(tempFour);
+  }
+  
+  
+}
+
+//Empty Shape
+void shape::emptyShape(){
+  state.shapeBlocks.clear();
+  rand++;
+  if(rand == 7){
+    rand = 0;
   }
 }
 

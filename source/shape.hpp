@@ -40,11 +40,17 @@ class shape{
   
  public:
   
+  //Current Random Shape
+  int rand;
+  
   //Shape Constructor for empty shape
   shape();
-  
+   
   //Shape Initializer
   void init();
+  
+  //Empty Shape
+  void emptyShape();
   
   //Test if shape can move in this direction
   bool moveTest(int direction);

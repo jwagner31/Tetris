@@ -69,6 +69,30 @@ using namespace Angel;
       }
   }
 
+//Rotate Test around center (0=clockwise, 1=counter-clockwise)
+bool block::rotateTest(int orientation, vec2 centroidBlockLoc){
+  
+  if(loc.x == centroidBlockLoc.x && loc.y == centroidBlockLoc.y){
+    return true;
+  }
+  vec2 centroid = vec2(centroidBlockLoc.x+0.5, centroidBlockLoc.y-0.5);
+  //vec2 blockCenter = vec;
+  float distX = loc.x - centroid.x;
+  float distY = loc.y - centroid.y;
+  
+  float newX = centroid.x + distY;
+  float newY = centroid.y - distX;
+  return true;
+  
+  
+}
+
+//Rotate Block around center (0=clockwise, 1=counter-clockwise)
+void block::rotate(int orientation, vec2 centroidBlock){
+  
+  
+}
+
 
 void block::gl_init(){
 

@@ -46,9 +46,27 @@ class board{
   
     //Current shape being controlled by user
     shape currShape;
+  
+    //Tells board to draw currshape
+  bool drawShape;
         
     //Board Constructor for initial spawn state
     board();
+  
+    //Animate the Board, Check if shape needs to be set
+    void animate();
+  
+    //Set Shape into blocks array
+    void setShape();
+    
+    //Spawn new shape into blocks array
+    void respawnShape();
+    
+    //See if line needs to be deleted
+    bool checkLine(int i);
+  
+    //Move lines down if line is full
+    void moveLinesDown(int i);
   
     void init();
 

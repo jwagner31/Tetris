@@ -71,6 +71,12 @@ class block{
   //Move block in given direction 0=down, 1=left, 2=right
   void move(int direction);
   
+  //Rotate Test around center (0=clockwise, 1=counter-clockwise)
+  bool rotateTest(int orientation, vec2 centroidBlock);
+  
+  //Rotate Block around center (0=clockwise, 1=counter-clockwise)
+  void rotate(int orientation, vec2 centroidBlock);
+  
   //Remove
   inline vec2 getLocation(){
     return loc;

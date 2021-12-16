@@ -39,6 +39,7 @@ board::board() {
       grid[i][j] = filler;
     }
   }
+  drawShape = true;
 };
 
 void board::init(){
@@ -49,6 +50,66 @@ void board::init(){
     }
   }
 }
+
+  //Animate the Board, Check if shape needs to be set
+void board::animate(){
+  if(!moveTest(0)){
+    setShape();
+    //Check if line needs to be deleted
+    for(int i = 0; i <20; i++){
+      if(!checkLine(i)){
+        moveLinesDown(i);
+      }
+    }
+    respawnShape();
+    
+  }else{
+    //User's shape is moved down automatically
+    move(0);
+  }
+}
+
+  //Set Shape into blocks array
+void board::setShape(){
+  for(int k = 0; k < 4; k++){
+    grid[getI(currShape.getBlock(k).getLocation().y)][getJ(currShape.getBlock(k).getLocation().x)].exists = true;
+    
+  }
+}
+  
+  //Spawn new shape into blocks array
+void board::respawnShape(){
+  currShape.emptyShape();
+  currShape.init();
+}
+
+//Returns false if full
+bool board::checkLine(int i){
+  for(int j = 0; j < 10; j++){
+    if(grid[i][j].exists == false){
+      return true;
+      break;
+    }
+  }
+  return false;
+}
+
+//delete blocks on line i, then shift lines above it down
+void board::moveLinesDown(int i){
+  for(int j = 0; j < 10; j++){
+    grid[i][j].exists = false;
+  }
+  for(int k = i-1; k >= 0; k--){
+    for(int j = 0; j < 10; j++){
+      if(grid[k][j].exists){
+        grid[k+1][j].exists = true;
+        grid[k][j].exists = false;
+      }
+    }
+  }
+}
+
+
 
 int board::getJ(float x){
   return x + 5;
@@ -218,8 +279,9 @@ void board::draw(mat4 proj){
       }
     }
   }
-  currShape.draw(proj);
-  
+  if(drawShape){
+    currShape.draw(proj);
+  }
   
   glBindVertexArray(0);
   glUseProgram(0);
