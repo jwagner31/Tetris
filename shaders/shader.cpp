@@ -6,4 +6,4 @@
 
 #include "shader.h"
 
-std::string shader_path = "/Users/joewagner/Documents/Github/Tetris/shaders/";
+std::string shader_path = "C:/Users/JT McDermott/Documents/GitHub/Tetris/shaders/";
