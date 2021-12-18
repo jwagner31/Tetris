@@ -72,8 +72,9 @@ void board::animate(){
   //Set Shape into blocks array
 void board::setShape(){
   for(int k = 0; k < 4; k++){
-    grid[getI(currShape.getBlock(k).getLocation().y)][getJ(currShape.getBlock(k).getLocation().x)].exists = true;
+    grid[getI(currShape.getBlock(k).getLocation().y)][getJ(currShape.getBlock(k).getLocation().x)] = currShape.getBlock(k);
     
+    grid[getI(currShape.getBlock(k).getLocation().y)][getJ(currShape.getBlock(k).getLocation().x)].exists = true;
   }
 }
   
@@ -102,6 +103,8 @@ void board::moveLinesDown(int i){
   for(int k = i-1; k >= 0; k--){
     for(int j = 0; j < 10; j++){
       if(grid[k][j].exists){
+        grid[k+1][j] = grid[k][j];
+        grid[k+1][j].loc.y -= 1;
         grid[k+1][j].exists = true;
         grid[k][j].exists = false;
       }
