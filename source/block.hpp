@@ -28,6 +28,7 @@
 using namespace Angel;
 
 #include "shader.h"
+#include "SourcePath.h"
 
 #include <cmath>
 
@@ -43,6 +44,7 @@ class block{
     GLuint vertex_shader, fragment_shader;  //Shaders
     GLint vpos_location, vcolor_location;   //reference to pos and color in shaders
     GLint M_location;     //Reference to matrix in shader
+    GLint vTexCoord;
   } GLvars;
   
 
@@ -52,6 +54,7 @@ class block{
   vec2 loc;
   vec3 color;
   bool exists;
+  std::vector < vec2 > uvs;
   
   //Block Constructor for initial spawn state
   block();

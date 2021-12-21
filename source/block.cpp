@@ -22,6 +22,7 @@ using namespace Angel;
 #include "block.hpp"
 #include "lodepng.h"
 #include "SourcePath.h"
+#include "SourcePath.cpp.in"
 
   //Block Constructor
   block::block(){
@@ -140,18 +141,23 @@ void block::gl_init(){
   std::string vshader = shader_path + "vshader_block.glsl";
   std::string fshader = shader_path + "fshader_block.glsl";
 
- // Texture objects references
- GLuint gray_block;
+// Texture objects references
+//populate uv array
+for(int i=0; i<4;i++){
+  uvs.push_back(block_vert[i]);
+}
+
+
+  GLuint gray_block;
 
 
   glGenTextures(1, &gray_block);
   
 
   std::string grayBlock = source_path + "/images/gray_block.png";
-  //loadFreeImageTexture(grayBlock.c_str(), gray_block, GL_TEXTURE0);
+  loadFreeImageTexture(grayBlock.c_str(), gray_block, GL_TEXTURE0);
 
-  //glUniform1i(glGetUniformLocation(GLvars.program, "textureGray"), 0);
-
+  glUniform1i(glGetUniformLocation(GLvars.program, "textureGray"), 0);
  
 
 
@@ -181,6 +187,7 @@ void block::gl_init(){
   GLvars.vpos_location   = glGetAttribLocation(GLvars.program, "vPos");
   GLvars.vcolor_location = glGetAttribLocation(GLvars.program, "vColor" );
   GLvars.M_location = glGetUniformLocation(GLvars.program, "M" );
+  GLvars.vTexCoord = glGetAttribLocation(GLvars.program, "vTexCoord");
   
   // Create a vertex array object
   glGenVertexArrays( 1, &GLvars.vao );
@@ -191,20 +198,25 @@ void block::gl_init(){
   glGenBuffers( 1, &GLvars.buffer );
   //Set GL state to use this buffer
   glBindBuffer( GL_ARRAY_BUFFER, GLvars.buffer );
+
+  unsigned int uv_bytes = uvs.size()*sizeof(vec2);
   
   //Create GPU buffer to hold vertices and color
-  glBufferData( GL_ARRAY_BUFFER, sizeof(block_vert) + sizeof(block_color), NULL, GL_STATIC_DRAW );
+  glBufferData( GL_ARRAY_BUFFER, sizeof(block_vert) + sizeof(block_color) + uv_bytes, NULL, GL_STATIC_DRAW );
   //First part of array holds vertices
   glBufferSubData( GL_ARRAY_BUFFER, 0, sizeof(block_vert), block_vert );
   //Second part of array hold colors (offset by sizeof(triangle))
   glBufferSubData( GL_ARRAY_BUFFER, sizeof(block_vert), sizeof(block_color), block_color );
-  
+  //Third part of array holds uvs
+  glBufferSubData(GL_ARRAY_BUFFER, sizeof(block_vert)+sizeof(block_color), uv_bytes, uvs[0]);
+
   glEnableVertexAttribArray(GLvars.vpos_location);
   glEnableVertexAttribArray(GLvars.vcolor_location );
+  glEnableVertexAttribArray(GLvars.vTexCoord);
   
   glVertexAttribPointer( GLvars.vpos_location, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0) );
   glVertexAttribPointer( GLvars.vcolor_location, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(block_vert)) );
-  
+  glVertexAttribPointer(GLvars.vTexCoord, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(block_vert)+sizeof(block_color)));
   glBindVertexArray(0);
 
 }
