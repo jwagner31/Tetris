@@ -28,12 +28,15 @@
 using namespace Angel;
 
 #include "shader.h"
+#include "SourcePath.h"
+#include "lodepng.h"
 
 #include <cmath>
 
 class block{
   vec2 block_vert[4];
   vec3 block_color[4];
+  vec2 texture_coords[4];
   
   //OpenGL variables for a block
   struct {
@@ -43,6 +46,7 @@ class block{
     GLuint vertex_shader, fragment_shader;  //Shaders
     GLint vpos_location, vcolor_location;   //reference to pos and color in shaders
     GLint M_location;     //Reference to matrix in shader
+    //GLuint vTexCoord;     //Texture coordinates
   } GLvars;
   
 
