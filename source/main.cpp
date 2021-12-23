@@ -95,7 +95,7 @@ int main(void)
     //(left, right, top, bottom)
     mat4 proj = Ortho2D(-10.0, 10.0, -10.0, 10.0);
     
-    if(glfwGetTime() > 0.4){
+    if(glfwGetTime() > 0.35){
       glfwSetTime(0.0);
       game.animate();
     }

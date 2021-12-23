@@ -226,17 +226,233 @@ void shape::move(int direction){
 void shape::rotate(){
   if(rand == 0){
     if(orientation == 0){
-      
+      state.shapeBlocks[0].loc.x -= 1;
+      state.shapeBlocks[0].loc.y += 2;
+      state.shapeBlocks[1].loc.x += 0;
+      state.shapeBlocks[1].loc.y += 1;
+      state.shapeBlocks[2].loc.x += 1;
+      state.shapeBlocks[2].loc.y -= 0;
+      state.shapeBlocks[3].loc.x +=2;
+      state.shapeBlocks[3].loc.y -= 1;
     }
     if(orientation == 1){
       state.shapeBlocks[0].loc.x += 2;
       state.shapeBlocks[0].loc.y += 1;
-
+      state.shapeBlocks[1].loc.x += 1;
+      state.shapeBlocks[1].loc.y += 0;
+      state.shapeBlocks[2].loc.x += 0;
+      state.shapeBlocks[2].loc.y -= 1;
+      state.shapeBlocks[3].loc.x -= 1;
+      state.shapeBlocks[3].loc.y -= 2;
+    }
+    if(orientation == 2){
+      state.shapeBlocks[0].loc.x += 1;
+      state.shapeBlocks[0].loc.y -= 2;
+      state.shapeBlocks[1].loc.x += 0;
+      state.shapeBlocks[1].loc.y -= 1;
+      state.shapeBlocks[2].loc.x -= 1;
+      state.shapeBlocks[2].loc.y -= 0;
+      state.shapeBlocks[3].loc.x -= 2;
+      state.shapeBlocks[3].loc.y += 1;
+    }
+    if(orientation == 3){
+      state.shapeBlocks[0].loc.x -= 2;
+      state.shapeBlocks[0].loc.y -= 1;
+      state.shapeBlocks[1].loc.x -= 1;
+      state.shapeBlocks[1].loc.y += 0;
+      state.shapeBlocks[2].loc.x += 0;
+      state.shapeBlocks[2].loc.y += 1;
+      state.shapeBlocks[3].loc.x += 1;
+      state.shapeBlocks[3].loc.y += 2;
     }
   }
   if(rand == 1){
-    
+    if(orientation == 0){
+      state.shapeBlocks[0].loc.x -= 0;
+      state.shapeBlocks[0].loc.y += 2;
+      state.shapeBlocks[1].loc.x -= 1;
+      state.shapeBlocks[1].loc.y += 1;
+      state.shapeBlocks[3].loc.x +=1;
+      state.shapeBlocks[3].loc.y -= 1;
+    }
+    if(orientation == 1){
+      state.shapeBlocks[0].loc.x += 2;
+      state.shapeBlocks[0].loc.y += 0;
+      state.shapeBlocks[1].loc.x += 1;
+      state.shapeBlocks[1].loc.y += 1;
+      state.shapeBlocks[3].loc.x -= 1;
+      state.shapeBlocks[3].loc.y -= 1;
+    }
+    if(orientation == 2){
+      state.shapeBlocks[0].loc.x += 0;
+      state.shapeBlocks[0].loc.y -= 2;
+      state.shapeBlocks[1].loc.x += 1;
+      state.shapeBlocks[1].loc.y -= 1;
+      state.shapeBlocks[3].loc.x -= 1;
+      state.shapeBlocks[3].loc.y += 1;
+    }
+    if(orientation == 3){
+      state.shapeBlocks[0].loc.x -= 2;
+      state.shapeBlocks[0].loc.y -= 0;
+      state.shapeBlocks[1].loc.x -= 1;
+      state.shapeBlocks[1].loc.y -= 1;
+      state.shapeBlocks[3].loc.x += 1;
+      state.shapeBlocks[3].loc.y += 1;
+    }
   }
+  if(rand == 2){
+    if(orientation == 0){
+      state.shapeBlocks[0].loc.x += 2;
+      state.shapeBlocks[0].loc.y += 0;
+      state.shapeBlocks[1].loc.x += 1;
+      state.shapeBlocks[1].loc.y -= 1;
+      state.shapeBlocks[3].loc.x -=1;
+      state.shapeBlocks[3].loc.y += 1;
+    }
+    if(orientation == 1){
+      state.shapeBlocks[0].loc.x += 0;
+      state.shapeBlocks[0].loc.y -= 2;
+      state.shapeBlocks[1].loc.x -= 1;
+      state.shapeBlocks[1].loc.y -= 1;
+      state.shapeBlocks[3].loc.x += 1;
+      state.shapeBlocks[3].loc.y += 1;
+    }
+    if(orientation == 2){
+      state.shapeBlocks[0].loc.x -= 2;
+      state.shapeBlocks[0].loc.y -= 0;
+      state.shapeBlocks[1].loc.x -= 1;
+      state.shapeBlocks[1].loc.y += 1;
+      state.shapeBlocks[3].loc.x += 1;
+      state.shapeBlocks[3].loc.y -= 1;
+    }
+    if(orientation == 3){
+      state.shapeBlocks[0].loc.x -= 0;
+      state.shapeBlocks[0].loc.y += 2;
+      state.shapeBlocks[1].loc.x += 1;
+      state.shapeBlocks[1].loc.y += 1;
+      state.shapeBlocks[3].loc.x -= 1;
+      state.shapeBlocks[3].loc.y -= 1;
+    }
+  }
+  if (rand == 4) {
+      if (orientation == 1) {
+          state.shapeBlocks[0].loc.x += 1;
+          state.shapeBlocks[0].loc.y += 1;
+          state.shapeBlocks[1].loc.x += 0;
+          state.shapeBlocks[1].loc.y += 0;
+          state.shapeBlocks[2].loc.x += 1;
+          state.shapeBlocks[2].loc.y -= 1;
+          state.shapeBlocks[3].loc.y -= 2;
+      }
+      if (orientation == 2) {
+          state.shapeBlocks[0].loc.x += 1;
+          state.shapeBlocks[0].loc.y -= 1;
+          state.shapeBlocks[1].loc.x += 0;
+          state.shapeBlocks[1].loc.y += 0;
+          state.shapeBlocks[2].loc.x -= 1;
+          state.shapeBlocks[2].loc.y -= 1;
+          state.shapeBlocks[3].loc.x -= 2;
+      }
+      if (orientation == 3) {
+          state.shapeBlocks[0].loc.x -= 1;
+          state.shapeBlocks[0].loc.y -= 1;
+          state.shapeBlocks[1].loc.x += 0;
+          state.shapeBlocks[1].loc.y += 0;
+          state.shapeBlocks[2].loc.x -= 1;
+          state.shapeBlocks[2].loc.y += 1;
+          state.shapeBlocks[3].loc.y += 2;
+      }
+      if (orientation == 0) {
+          state.shapeBlocks[0].loc.x -= 1;
+          state.shapeBlocks[0].loc.y += 1;
+          state.shapeBlocks[1].loc.x += 0;
+          state.shapeBlocks[1].loc.y += 0;
+          state.shapeBlocks[2].loc.x += 1;
+          state.shapeBlocks[2].loc.y += 1;
+          state.shapeBlocks[3].loc.x += 2;
+      }
+  }
+      if (rand == 5) {
+          if (orientation == 1) {
+              state.shapeBlocks[0].loc.x += 1;
+              state.shapeBlocks[0].loc.y += 1;
+              state.shapeBlocks[1].loc.x += 0;
+              state.shapeBlocks[1].loc.y += 0;
+              state.shapeBlocks[2].loc.x += 1;
+              state.shapeBlocks[2].loc.y -= 1;
+              state.shapeBlocks[3].loc.y -= 1;
+              state.shapeBlocks[3].loc.x -= 1;
+          }
+          if (orientation == 2) {
+              state.shapeBlocks[0].loc.x += 1;
+              state.shapeBlocks[0].loc.y -= 1;
+              state.shapeBlocks[1].loc.x += 0;
+              state.shapeBlocks[1].loc.y += 0;
+              state.shapeBlocks[2].loc.x -= 1;
+              state.shapeBlocks[2].loc.y -= 1;
+              state.shapeBlocks[3].loc.y += 1;
+              state.shapeBlocks[3].loc.x -= 1;
+          }
+          if (orientation == 3) {
+              state.shapeBlocks[0].loc.x -= 1;
+              state.shapeBlocks[0].loc.y -= 1;
+              state.shapeBlocks[1].loc.x += 0;
+              state.shapeBlocks[1].loc.y += 0;
+              state.shapeBlocks[2].loc.x -= 1;
+              state.shapeBlocks[2].loc.y += 1;
+              state.shapeBlocks[3].loc.y += 1;
+              state.shapeBlocks[3].loc.x += 1;
+          }
+          if (orientation == 0) {
+              state.shapeBlocks[0].loc.x -= 1;
+              state.shapeBlocks[0].loc.y += 1;
+              state.shapeBlocks[1].loc.x += 0;
+              state.shapeBlocks[1].loc.y += 0;
+              state.shapeBlocks[2].loc.x += 1;
+              state.shapeBlocks[2].loc.y += 1;
+              state.shapeBlocks[3].loc.y -= 1;
+              state.shapeBlocks[3].loc.x += 1;
+          }
+      }
+      if(rand == 6) {
+          if (orientation == 1) {
+              state.shapeBlocks[0].loc.x += 2;
+              state.shapeBlocks[1].loc.x += 1;
+              state.shapeBlocks[1].loc.y -= 1;
+              state.shapeBlocks[2].loc.x += 0;
+              state.shapeBlocks[2].loc.y -= 0;
+              state.shapeBlocks[3].loc.y -= 1;
+              state.shapeBlocks[3].loc.x -= 1;
+          }
+          if (orientation == 2) {
+              state.shapeBlocks[0].loc.y -= 2;
+              state.shapeBlocks[1].loc.x -= 1;
+              state.shapeBlocks[1].loc.y -= 1;
+              state.shapeBlocks[2].loc.x += 0;
+              state.shapeBlocks[2].loc.y -= 0;
+              state.shapeBlocks[3].loc.y += 1;
+              state.shapeBlocks[3].loc.x -= 1;
+          }
+          if (orientation == 3) {
+              state.shapeBlocks[0].loc.x -= 2;
+              state.shapeBlocks[1].loc.x -= 1;
+              state.shapeBlocks[1].loc.y += 1;
+              state.shapeBlocks[2].loc.x += 0;
+              state.shapeBlocks[2].loc.y -= 0;
+              state.shapeBlocks[3].loc.y += 1;
+              state.shapeBlocks[3].loc.x += 1;
+          }
+          if (orientation == 0) {
+              state.shapeBlocks[0].loc.y += 2;
+              state.shapeBlocks[1].loc.x += 1;
+              state.shapeBlocks[1].loc.y += 1;
+              state.shapeBlocks[2].loc.x += 0;
+              state.shapeBlocks[2].loc.y += 0;
+              state.shapeBlocks[3].loc.y -= 1;
+              state.shapeBlocks[3].loc.x += 1;
+          }
+      }
+  
 }
 
 

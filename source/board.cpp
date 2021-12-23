@@ -62,6 +62,7 @@ void board::animate(){
       }
     }
     respawnShape();
+    //restartGame();
     
   }else{
     //User's shape is moved down automatically
