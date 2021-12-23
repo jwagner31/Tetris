@@ -61,6 +61,10 @@ class board{
     //Set Shape into blocks array
     void setShape();
     
+  
+    //Restarts game with empty block array
+  void restartGame();
+  
     //Spawn new shape into blocks array
     void respawnShape();
     

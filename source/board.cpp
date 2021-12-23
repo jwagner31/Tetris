@@ -51,6 +51,20 @@ void board::init(){
   }
 }
 
+void board::restartGame(){
+  for(int k = 0; k < 4; k++){
+
+ if(grid[getI(currShape.getBlock(k).getLocation().y)][getJ(currShape.getBlock(k).getLocation().x)].exists == true){
+      for(int i = 0; i < 20; i++){
+        for(int j = 0; j < 10; j++){
+          block filler(getX(j), getY(i));
+          filler.exists = false;
+          grid[i][j] = filler;
+        }
+      }
+    }
+  }
+}
   //Animate the Board, Check if shape needs to be set
 void board::animate(){
   if(!moveTest(0)){
@@ -62,7 +76,7 @@ void board::animate(){
       }
     }
     respawnShape();
-    //restartGame();
+    restartGame();
     
   }else{
     //User's shape is moved down automatically
