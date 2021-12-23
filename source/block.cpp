@@ -106,6 +106,7 @@ static void error_callback(int error, const char* description)
   //Block Constructor
   block::block(){
     loc = vec2(0.0, 0.0);
+    origin = vec2(loc.x-0.5, loc.y-0.5);
     color = vec3(0.0, 0.0, 1.0);
     exists = true;
 
@@ -113,6 +114,7 @@ static void error_callback(int error, const char* description)
 
   block::block(float x, float y){
     loc = vec2(x, y);
+    origin = vec2(loc.x-0.5, loc.y-0.5);
     color = vec3(0.8, 0.0, 0.0);
     exists = true;
 
@@ -142,39 +144,35 @@ static void error_callback(int error, const char* description)
       //Move Down
       if(direction == 0){
         setLocation(getLocation().x, getLocation().y-1);
+        setOrigin(origin.x, origin.y-1.0);
       }
       if(direction == 1){
         setLocation(getLocation().x-1, getLocation().y);
+        setOrigin(origin.x-1.0, origin.y);
       }
       if(direction == 2){
         setLocation(getLocation().x+1, getLocation().y);
+        setOrigin(origin.x+1, origin.y);
       }
   }
 
-//Rotate Test around center (0=clockwise, 1=counter-clockwise)
-bool block::rotateTest(int orientation, vec2 centroidBlockLoc){
+//Rotate around center (0=clockwise, 1=counter-clockwise)
+void block::rotate(int orientation, vec2 centroid){
   
-  if(loc.x == centroidBlockLoc.x && loc.y == centroidBlockLoc.y){
-    return true;
+  if(origin.x != centroid.x && origin.y != centroid.y){
+    //float distX = origin.x - centroid.x;
+    //float distY = centroid.y - origin.y;
+    
+    float newX = centroid.x+centroid.y-origin.y;
+    float newY = centroid.y-centroid.x+origin.x;
+      
+    origin.x = newX;
+    origin.y = newY;
+    loc.x = newX-0.5;
+    loc.y = newY+0.5;
   }
-  vec2 centroid = vec2(centroidBlockLoc.x+0.5, centroidBlockLoc.y-0.5);
-  //vec2 blockCenter = vec;
-  float distX = loc.x - centroid.x;
-  float distY = loc.y - centroid.y;
-  
-  float newX = centroid.x + distY;
-  float newY = centroid.y - distX;
-  return true;
-  
   
 }
-
-//Rotate Block around center (0=clockwise, 1=counter-clockwise)
-void block::rotate(int orientation, vec2 centroidBlock){
-  
-  
-}
-
 
 void block::gl_init(){
 
@@ -188,10 +186,10 @@ void block::gl_init(){
   block_color[2] = color;
   block_color[3] = color;
 
-  texture_coords[0] = vec2(0.0, 0.0);
-  texture_coords[1] = vec2(0.0, -1.0);
-  texture_coords[2] = vec2(1.0, 0.0);
-  texture_coords[3] = vec2(1.0, -1.0);
+  texture_coords[0] = vec2(0.0, 1.0);
+  texture_coords[1] = vec2(0.0, 0.0);
+  texture_coords[2] = vec2(1.0, 1.0);
+  texture_coords[3] = vec2(1.0, 0.0);
 
   std::string vshader = shader_path + "vshader_block.glsl";
   std::string fshader = shader_path + "fshader_block.glsl";

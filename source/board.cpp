@@ -173,6 +173,40 @@ void board::addBlock(block block){
     }
     
   }
+
+void board::rotate(){
+  shape temp = currShape;
+  temp.orientation++;
+  if(temp.orientation == 4){
+    temp.orientation = 0;
+  }
+  temp.rotate();
+  bool rotateTest = true;
+  for(int k = 0; k < 4; k++){
+    int i = getI(temp.getBlock(k).getLocation().y);
+    int j = getJ(temp.getBlock(k).getLocation().x);
+    if(!isEmpty(i, j)){
+      rotateTest = false;
+      break;
+    }
+    if(temp.getBlock(k).getLocation().y > 10.0 || temp.getBlock(k).getLocation().y < -9.0){
+      rotateTest = false;
+      break;
+    }
+    if(temp.getBlock(k).getLocation().x > 4.0 || temp.getBlock(k).getLocation().x < -5.0){
+      rotateTest = false;
+      break;
+    }
+  }
+  if(rotateTest == true){
+    currShape.orientation++;
+    if(currShape.orientation == 4){
+      currShape.orientation = 0;
+    }
+    currShape.rotate();
+  }
+}
+
   
 //Move current shape
 void board::move(int direction){

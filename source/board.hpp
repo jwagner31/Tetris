@@ -56,6 +56,8 @@ class board{
     //Animate the Board, Check if shape needs to be set
     void animate();
   
+    //Rotate currShape
+  void rotate();
     //Set Shape into blocks array
     void setShape();
     

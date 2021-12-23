@@ -4,6 +4,7 @@ using namespace Angel;
 
 //board board;
 board game;
+//shape shape;
 static void error_callback(int error, const char* description)
 {
   fprintf(stderr, "Error: %s\n", description);
@@ -20,6 +21,8 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
     game.move(2);
   if (key == GLFW_KEY_DOWN && (action == GLFW_PRESS || action == GLFW_REPEAT))
     game.move(0);
+  if (key == GLFW_KEY_UP && (action == GLFW_PRESS || action == GLFW_REPEAT))
+    game.rotate();
   if (key == GLFW_KEY_SPACE){
     if(action == GLFW_PRESS){
       //ship.start_thruster();
@@ -92,7 +95,7 @@ int main(void)
     //(left, right, top, bottom)
     mat4 proj = Ortho2D(-10.0, 10.0, -10.0, 10.0);
     
-    if(glfwGetTime() > 0.5){
+    if(glfwGetTime() > 0.4){
       glfwSetTime(0.0);
       game.animate();
     }

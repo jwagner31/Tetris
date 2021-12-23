@@ -43,8 +43,14 @@ class shape{
   //Current Random Shape
   int rand;
   
+  //Orientation of Shape
+  int orientation;
+  
   //Shape Constructor for empty shape
   shape();
+  
+  //Shape's centroid for rotation
+  vec2 centroid;
    
   //Shape Initializer
   void init();
@@ -57,6 +63,9 @@ class shape{
 
   //Move shape in given direction 0=down, 1=left, 2=right
   void move(int direction);
+  
+  //Rotate shape
+  void rotate();
   
   //Draw a shape by drawing the four blocks in shapeBlocks
   void draw(mat4 proj);

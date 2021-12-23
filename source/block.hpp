@@ -53,7 +53,8 @@ class block{
  public:
   
   //Current values for the block
-  vec2 loc;
+  vec2 loc; //top left of block
+  vec2 origin; //center of block used for rotation
   vec3 color;
   bool exists;
   
@@ -74,9 +75,6 @@ class block{
 
   //Move block in given direction 0=down, 1=left, 2=right
   void move(int direction);
-  
-  //Rotate Test around center (0=clockwise, 1=counter-clockwise)
-  bool rotateTest(int orientation, vec2 centroidBlock);
   
   //Rotate Block around center (0=clockwise, 1=counter-clockwise)
   void rotate(int orientation, vec2 centroidBlock);
@@ -101,6 +99,10 @@ class block{
     color.z = b;
   }
   
+  inline void setOrigin(float x, float y){
+    origin.x = x;
+    origin.y = y;
+  }
 };
 
 

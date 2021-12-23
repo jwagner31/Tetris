@@ -31,7 +31,9 @@ shape::shape(){
 //Shape Initializer
 void shape::init(){
     state.blockCount = 4;
-  //I
+
+   orientation  = 0;
+  //_____
   if(rand == 0){
       block tempOne(-2.0, 10.0);
       block tempTwo(-1.0, 10.0);
@@ -49,6 +51,8 @@ void shape::init(){
     state.shapeBlocks.push_back(tempTwo);
     state.shapeBlocks.push_back(tempThree);
     state.shapeBlocks.push_back(tempFour);
+    centroid.x = 0.0;
+    centroid.y = 9.0;
   }
   //J
   if(rand == 1){
@@ -68,6 +72,8 @@ void shape::init(){
     state.shapeBlocks.push_back(tempTwo);
     state.shapeBlocks.push_back(tempThree);
     state.shapeBlocks.push_back(tempFour);
+    centroid.x = 0.5;
+    centroid.y = 8.5;
   }
   //L
   if(rand == 2){
@@ -87,6 +93,8 @@ void shape::init(){
     state.shapeBlocks.push_back(tempTwo);
     state.shapeBlocks.push_back(tempThree);
     state.shapeBlocks.push_back(tempFour);
+    centroid.x = 0.5;
+    centroid.y = 8.5;
   }
   //o
   if(rand == 3){
@@ -106,6 +114,8 @@ void shape::init(){
     state.shapeBlocks.push_back(tempTwo);
     state.shapeBlocks.push_back(tempThree);
     state.shapeBlocks.push_back(tempFour);
+    centroid.x = 1.0;
+    centroid.y = 9.0;
   }
   //s
   if(rand == 4){
@@ -125,6 +135,8 @@ void shape::init(){
     state.shapeBlocks.push_back(tempTwo);
     state.shapeBlocks.push_back(tempThree);
     state.shapeBlocks.push_back(tempFour);
+    centroid.x = 0.5;
+    centroid.y = 8.5;
   }
   //T
   if(rand == 5){
@@ -144,6 +156,8 @@ void shape::init(){
     state.shapeBlocks.push_back(tempTwo);
     state.shapeBlocks.push_back(tempThree);
     state.shapeBlocks.push_back(tempFour);
+    centroid.x = 0.5;
+    centroid.y = 8.5;
   }
   //Z
   if(rand == 6){
@@ -163,6 +177,8 @@ void shape::init(){
     state.shapeBlocks.push_back(tempTwo);
     state.shapeBlocks.push_back(tempThree);
     state.shapeBlocks.push_back(tempFour);
+    centroid.x = 0.5;
+    centroid.y = 8.5;
   }
   
   
@@ -195,8 +211,34 @@ void shape::move(int direction){
   for(int i = 0; i < 4; i++){
     state.shapeBlocks[i].move(direction);
   }
+    if(direction == 0){
+      centroid.y--;
+    }
+    if(direction == 1){
+      centroid.x--;
+    }
+    if(direction == 2){
+      centroid.x++;
+    }
   }
 }
+
+void shape::rotate(){
+  if(rand == 0){
+    if(orientation == 0){
+      
+    }
+    if(orientation == 1){
+      state.shapeBlocks[0].loc.x += 2;
+      state.shapeBlocks[0].loc.y += 1;
+
+    }
+  }
+  if(rand == 1){
+    
+  }
+}
+
 
 
 block shape::getBlock(int index){
