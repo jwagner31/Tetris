@@ -29,7 +29,6 @@ using namespace Angel;
 
 #include "shader.h"
 #include "SourcePath.h"
-#include "lodepng.h"
 
 #include <cmath>
 
